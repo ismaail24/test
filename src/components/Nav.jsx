@@ -1,21 +1,24 @@
 import React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Menu,
+  MenuItem,
+  Container,
+  Link,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Link from "@mui/material/Link";
-import MenuItem from "@mui/material/MenuItem";
+import "../index.css";
 
 const pages = [
-  { value: "المدونة", key: "footer" },
-  { value: "اتصل بنا", key: "contact" },
-  { value: "الخدمات", key: "services" },
-  { value: "حول", key: "about" },
   { value: "الرئيسية", key: "home" },
+  { value: "حول", key: "about" },
+  { value: "الخدمات", key: "services" },
+  { value: "اتصل بنا", key: "contact" },
+  { value: "العنوان وساعات الدوام", key: "Adresse-horaires-ouverture" },
 ];
 
 const Nav = () => {
@@ -29,38 +32,65 @@ const Nav = () => {
     setAnchorElNav(null);
   };
 
+  const renderNavLinks = (isMobile = false) =>
+    pages.map((page) => (
+      <MenuItem
+        key={page.key}
+        onClick={handleCloseNavMenu}
+        sx={{ px: isMobile ? 2 : 0 }}
+      >
+        <Link
+          href={`#${page.key}`}
+          underline="none"
+          sx={{
+            color: "black",
+            fontWeight: isMobile ? "bold" : 900,
+            fontSize: isMobile ? "18px" : "22px",
+            "&:hover": {
+              color: "primary.main",
+            },
+          }}
+        >
+          {page.value}
+        </Link>
+      </MenuItem>
+    ));
+
   return (
-    <AppBar position="fixed" sx={{ backgroundColor: "#e3e9e7" }}>
+    <AppBar
+      position="fixed"
+      sx={{
+        backgroundColor: "#e3e9e7",
+        width: "100%",
+        zIndex: 1100,
+        direction: "rtl",
+      }}
+    >
       <Container maxWidth="xl">
         <Toolbar
           disableGutters
           sx={{
             display: "flex",
             justifyContent: "space-between",
-            backgroundColor: "#e3e9e7",
-            direction: "rtl",
+            alignItems: "center",
+            width: "100%",
           }}
         >
           {/* Logo */}
           <Typography
-            variant="h6"
-            noWrap
             component="a"
             href="#home"
             sx={{
-              display: { xs: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              color: "black",
-              textDecoration: "none",
+              display: "flex",
               width: { xs: "150px", md: "200px" },
               height: { xs: "60px", md: "80px" },
+              textDecoration: "none",
             }}
           >
             <img
-              style={{ width: "100%", height: "100%", objectFit: "contain" }}
               src="/logo2_Boutghratine.png"
-              alt="logo"
+              alt="Logo"
+              style={{ width: "100%", height: "100%", objectFit: "contain" }}
             />
           </Typography>
 
@@ -68,6 +98,7 @@ const Nav = () => {
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
+              aria-label="open navigation menu"
               onClick={handleOpenNavMenu}
               sx={{ color: "black" }}
             >
@@ -80,42 +111,13 @@ const Nav = () => {
               anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
               transformOrigin={{ vertical: "top", horizontal: "right" }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page.key} onClick={handleCloseNavMenu}>
-                  <Link
-                    href={`#${page.key}`}
-                    underline="none"
-                    sx={{
-                      color: "black",
-                      fontWeight: "bold",
-                      fontSize: "18px",
-                    }}
-                  >
-                    {page.value}
-                  </Link>
-                </MenuItem>
-              ))}
+              {renderNavLinks(true)}
             </Menu>
           </Box>
 
           {/* Desktop Menu */}
           <Box sx={{ display: { xs: "none", md: "flex" }, gap: 3 }}>
-            {pages.map((page) => (
-              <Link
-                key={page.key}
-                href={`#${page.key}`}
-                underline="none"
-                sx={{
-                  color: "black",
-                  fontWeight: "900",
-                  fontSize: "22px",
-                  textDecoration: "none",
-                  "&:hover": { color: "primary.main" },
-                }}
-              >
-                {page.value}
-              </Link>
-            ))}
+            {renderNavLinks(false)}
           </Box>
         </Toolbar>
       </Container>

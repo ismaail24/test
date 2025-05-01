@@ -35,11 +35,10 @@ a:hover::after {
 }
 
 body {
-  background: #c2cbcb;
-  width: 100vw;
+  background: #fefefe;
+  max-width: 100%;
   min-height: 100vh; /* يأخذ الطول حسب المحتوى */
-  background-image: radial-gradient(#83979c 1px, transparent 1px);
-  background-size: 15px 15px;
+
   text-align: center;
 
   overflow-x: hidden; /* يمنع التحريك الجانبي */
@@ -55,8 +54,9 @@ body::-webkit-scrollbar {
 }
 
 .container {
-  width: 90%;
+  width: 100%;
   margin: auto;
+  overflow-x: hidden;
 }
 
 /* Home */
@@ -113,6 +113,7 @@ body::-webkit-scrollbar {
   .container {
     width: 100%;
     margin: auto;
+    overflow-x: hidden;
   }
   .home-content h1 {
     font-size: 68px;
@@ -166,6 +167,7 @@ body::-webkit-scrollbar {
   .container {
     width: 100%;
     margin: auto;
+    overflow-x: hidden;
   }
   .home {
     height: 650px;

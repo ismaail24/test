@@ -2,7 +2,7 @@ import React from "react";
 
 const Location = () => {
   return (
-    <section className="location-section py-5" id="location">
+    <section className="location-section py-5" id="Adresse-horaires-ouverture">
       <div className="container">
         <h2 className="fw-bold text-primary text-center mb-5">موقعنا</h2>
 
