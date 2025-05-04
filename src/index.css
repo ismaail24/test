@@ -61,11 +61,11 @@ body::-webkit-scrollbar {
 
 /* Home */
 .home {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background-color: #f4f4f4;
   background-image: url("/home.png");
-  background-size: 100% 100%;
+  background-size: 100vw 100%;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
@@ -81,7 +81,7 @@ body::-webkit-scrollbar {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.132);
 }
 
 .home-content {
@@ -144,7 +144,7 @@ body::-webkit-scrollbar {
 /* Mobile */
 @media (max-width: 768px) {
   .home {
-    height: 700px;
+    height: 100vh;
   }
 
   .home-content {
@@ -165,12 +165,12 @@ body::-webkit-scrollbar {
 /* Extra Small Mobile */
 @media (max-width: 480px) {
   .container {
-    width: 100%;
+    width: 100vw;
     margin: auto;
     overflow-x: hidden;
   }
   .home {
-    height: 650px;
+    height: 100vh;
   }
 
   .home-content {
