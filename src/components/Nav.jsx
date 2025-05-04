@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Box,
@@ -13,16 +13,8 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import "../index.css";
 
-const pages = [
-  { value: "الرئيسية", key: "home" },
-  { value: "حول", key: "about" },
-  { value: "الخدمات", key: "services" },
-  { value: "اتصل بنا", key: "contact" },
-  { value: "العنوان وساعات الدوام", key: "Adresse-horaires-ouverture" },
-];
-
 const Nav = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -31,6 +23,14 @@ const Nav = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+
+  const pages = [
+    { value: "الرئيسية", key: "home" },
+    { value: "حول", key: "about" },
+    { value: "الخدمات", key: "services" },
+    { value: "اتصل بنا", key: "contact" },
+    { value: "العنوان وساعات الدوام", key: "Adresse-horaires-ouverture" },
+  ];
 
   const renderNavLinks = (isMobile = false) =>
     pages.map((page) => (
@@ -73,7 +73,6 @@ const Nav = () => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            width: "100%",
           }}
         >
           {/* Logo */}
@@ -110,6 +109,7 @@ const Nav = () => {
               onClose={handleCloseNavMenu}
               anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
               transformOrigin={{ vertical: "top", horizontal: "right" }}
+              disableScrollLock // 🔒 Empêche le décalage du body
             >
               {renderNavLinks(true)}
             </Menu>
