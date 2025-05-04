@@ -1,3 +1,4 @@
+/* Reset */
 * {
   padding: 0;
   margin: 0;
@@ -6,6 +7,7 @@
   font-family: "Cairo", sans-serif;
   box-sizing: border-box;
 }
+
 a {
   position: relative;
   color: black;
@@ -37,16 +39,13 @@ a:hover::after {
 body {
   background: #fefefe;
   max-width: 100%;
-  min-height: 100vh; /* يأخذ الطول حسب المحتوى */
-
+  min-height: 100vh;
   text-align: center;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
-  overflow-x: hidden; /* يمنع التحريك الجانبي */
-  overflow-y: scroll; /* يسمح بالتحريك العمودي */
-
-  /* لإخفاء Scrollbar */
-  scrollbar-width: 0; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
 }
 
 body::-webkit-scrollbar {
@@ -61,17 +60,17 @@ body::-webkit-scrollbar {
 
 /* Home */
 .home {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background-color: #f4f4f4;
   background-image: url("/home.png");
-  background-size: 100vw 100%;
+  background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center; /* pour centrer le contenu */
+  justify-content: center;
 }
 
 .home::after {
@@ -93,6 +92,7 @@ body::-webkit-scrollbar {
   padding: 20px;
   text-align: center;
   z-index: 2;
+  width: 100%;
 }
 
 .home-content h1 {
@@ -110,11 +110,6 @@ body::-webkit-scrollbar {
 
 /* Large Screens */
 @media (max-width: 1200px) {
-  .container {
-    width: 100%;
-    margin: auto;
-    overflow-x: hidden;
-  }
   .home-content h1 {
     font-size: 68px;
   }
@@ -126,18 +121,12 @@ body::-webkit-scrollbar {
 
 /* Tablet */
 @media (max-width: 992px) {
-  .container {
-    width: 100%;
-    margin: auto;
-  }
   .home-content h1 {
     font-size: 60px;
-    width: 100%;
   }
 
   .home-content h3 {
     font-size: 40px;
-    width: 100%;
   }
 }
 
@@ -147,48 +136,30 @@ body::-webkit-scrollbar {
     height: 100vh;
   }
 
-  .home-content {
-    width: 100%;
-  }
-
   .home-content h1 {
     font-size: 54px;
-    width: 100%;
   }
 
   .home-content h3 {
     font-size: 35px;
-    width: 100%;
   }
 }
 
 /* Extra Small Mobile */
 @media (max-width: 480px) {
   .container {
-    width: 100vw;
-    margin: auto;
-    overflow-x: hidden;
-  }
-  .home {
-    height: 100vh;
-  }
-
-  .home-content {
     width: 100%;
   }
-
   .home-content h1 {
     font-size: 50px;
-    width: 100%;
   }
 
   .home-content h3 {
     font-size: 36px;
-    width: 100%;
   }
 }
 
-/* about */
+/* About Section */
 .about {
   display: flex;
   flex-direction: row-reverse;
@@ -228,11 +199,9 @@ body::-webkit-scrollbar {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* services */
-
+/* Services Section */
 .services {
-  padding-bottom: 200px;
-  padding: 1080px 0;
+  padding: 100px 20px;
   text-align: center;
   min-height: 90vh;
 }
@@ -251,7 +220,7 @@ body::-webkit-scrollbar {
 
 .service-card {
   background: #fff;
-  padding: 80px 120px;
+  padding: 80px 40px;
   border-radius: 20px;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -284,4 +253,32 @@ body::-webkit-scrollbar {
 .service-card h3 {
   font-size: 20px;
   color: #333;
+}
+
+/* nav */
+
+/* Assure que tout le layout reste propre */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Empêche le menu mobile de faire dépasser la largeur */
+.MuiPaper-root {
+  max-width: 100vw !important;
+  overflow-x: hidden;
+}
+
+/* Animation douce pour le menu mobile */
+.MuiMenu-paper {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Règle générale pour éviter les débordements */
+* {
+  box-sizing: border-box;
 }

@@ -37,7 +37,10 @@ const Nav = () => {
       <MenuItem
         key={page.key}
         onClick={handleCloseNavMenu}
-        sx={{ px: isMobile ? 2 : 0 }}
+        sx={{
+          px: isMobile ? 2 : 0,
+          textAlign: isMobile ? "center" : "inherit",
+        }}
       >
         <Link
           href={`#${page.key}`}
@@ -46,6 +49,8 @@ const Nav = () => {
             color: "black",
             fontWeight: isMobile ? "bold" : 900,
             fontSize: isMobile ? "18px" : "22px",
+            width: "100%",
+            display: "block",
             "&:hover": {
               color: "primary.main",
             },
@@ -64,6 +69,7 @@ const Nav = () => {
         width: "100%",
         zIndex: 1100,
         direction: "rtl",
+        boxShadow: "none",
       }}
     >
       <Container maxWidth="xl">
@@ -97,19 +103,30 @@ const Nav = () => {
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
-              aria-label="open navigation menu"
+              aria-label="فتح القائمة"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
               onClick={handleOpenNavMenu}
               sx={{ color: "black" }}
             >
               <MenuIcon />
             </IconButton>
             <Menu
+              id="menu-appbar"
               anchorEl={anchorElNav}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
               transformOrigin={{ vertical: "top", horizontal: "right" }}
-              disableScrollLock // 🔒 Empêche le décalage du body
+              disableScrollLock // 🔒 empêche le décalage du body
+              PaperProps={{
+                sx: {
+                  width: "200px", // pleine largeur mobile
+                  maxWidth: "100%",
+                  borderRadius: 0,
+                  backgroundColor: "#fefefe",
+                },
+              }}
             >
               {renderNavLinks(true)}
             </Menu>
